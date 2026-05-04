@@ -1,4 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using System.Runtime;
+
 public class BillingStrategy
 {
     int usage,rate;
@@ -28,10 +30,18 @@ public class BillingStrategy
     }
     public class IDiscountPolicy
     {
-        int discount;
-        public static int SeasonalDiscount(int discount)
+        int amount,discount,threshold;
+        public static int SeasonalDiscount(int amount,int discount)
         {
-            return discount;
+            return amount-discount;
+        }
+        public static int VolumeDiscount(int amount,int discount,int threshold)
+        {
+            if (amount < threshold)
+            {
+                return amount-discount;
+            }
+            return amount;
         }
     }
 }
