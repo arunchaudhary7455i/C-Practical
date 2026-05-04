@@ -26,4 +26,12 @@ public class BillingStrategy
             Console.WriteLine("Invoice Paid Successfully");
         }
     }
+    public class IDiscountPolicy
+    {
+        int discount;
+        public static int SeasonalDiscount(int discount)
+        {
+            return discount;
+        }
+    }
 }
